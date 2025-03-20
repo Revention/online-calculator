@@ -9,7 +9,8 @@
   <body>
     <div class="container">
       <h1>Online Calculator</h1>
-      <input type="number" id="firstNumber" placeholder="First number" />
+  <!-- CHANGE Removed the type check from the HTML file and put it in the javascript file -->
+      <input id="firstNumber" placeholder="First number" />
       <select id="operator">
         <option value="+">+</option>
         <option value="-">-</option>
@@ -18,7 +19,8 @@
         <option value="%">%</option>
         <option value="**">**</option>
       </select>
-      <input type="number" id="secondNumber" placeholder="Second number" />
+  <!-- CHANGE Removed the type check from the HTML file and put it in the javascript file -->
+      <input id="secondNumber" placeholder="Second number" />
       <button id="calculate">Calculate</button>
       <p id="result">Result will be displayed here</p>
     </div>
