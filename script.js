@@ -1,57 +1,68 @@
+// Initialize constants from html inputfields
 const firstNumberInput = document.getElementById('firstNumber');
 const secondNumberInput = document.getElementById('secondNumber');
 const operatorInput = document.getElementById('operator');
 const calculateButton = document.getElementById('calculate');
-const resultText = document.getElementById('result');      // CHANGE constant name
+const resultText = document.getElementById('result');
 
+/// FUNTION: calculate - purpose: calculate the result between two numbers based on a specific operation
+/// INPUT: Three constants as integer numbers
+/// OUTPUT: One calculated result as floating point constant
 function calculate() {
   const firstNumber = firstNumberInput.value;
   const secondNumber = secondNumberInput.value;
   const operator = operatorInput.value;
 
-  // CHANGE Removed the type check from the HTML file and want to put it in the javascript file
+  // Type check for inputfields 
   if (isNaN(firstNumber) || isNaN(secondNumber)) {
     resultText.textContent = 'Only numbers are allowed';
-    return;  // exit the calcuate function
+    return;
   }
 
-  // Add the numbers and show it in the html field
-  // selection based on the operator
-  // TODO I prefer switch but first just make it work
-  if (operator == '+') {
-    let calculateResult = Number(firstNumber) + Number(secondNumber);
-    displayResult(calculateResult);
-  } else if (operator == '-') {
-    let calculateResult = Number(firstNumber) - Number(secondNumber);
-    displayResult(calculateResult);
-  } else if (operator == '*') {
-    let calculateResult = Number(firstNumber) * Number(secondNumber);
-    displayResult(calculateResult);
-  } else if (operator == '/') {
-    if (secondNumber == 0) {
-      resultText.textContent = 'You can\'t divide by zero'      // CHANGE added division check
-      return;
-    }
-    let calculateResult = Number(firstNumber) / Number(secondNumber);
-    displayResult(calculateResult);
-  } else if (operator == '%') {
-    if (secondNumber == 0) {
-      resultText.textContent = 'You can\'t divide by zero'      // CHANGE added division check
-      return;
-    }
-    let calculateResult = Number(firstNumber) % Number(secondNumber);
-    displayResult(calculateResult);
-  } else if (operator == '**') {
-    let calculateResult = Number(firstNumber) ** Number(secondNumber);
-    displayResult(calculateResult);
-  } else {
-    displayResult("not found");
-  }
-
-  // document.getElementById('result').innerHTML = calculateResult;   // first solution to write result to screen
-  function displayResult(calculateResult) {
-    resultText.textContent = 'Result: ' + calculateResult; // alternative solution slightly more elegant
+  // Each operator selector results in a specific calculatio
+  switch (operator) {
+    case '+':
+      calculateResult = Number(firstNumber) + Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    case '-':
+      calculateResult = Number(firstNumber) - Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    case '*':
+      calculateResult = Number(firstNumber) * Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    case '/':
+      if (secondNumber == 0) {
+        resultText.textContent = 'You can\'t divide by zero'      // CHANGE added division check
+        return;
+      }
+      calculateResult = Number(firstNumber) / Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    case '%':
+      if (secondNumber == 0) {
+        resultText.textContent = 'You can\'t divide by zero'      // CHANGE added division check
+        return;
+      }
+      calculateResult = Number(firstNumber) % Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    case '**':
+      calculateResult = Number(firstNumber) ** Number(secondNumber);
+      displayResult(calculateResult);
+      break;
+    default:
+      displayResult("Operator not found");
+      break;
   }
 }
 
+// Display result in Htmlfield
+function displayResult(calculateResult) {
+  resultText.textContent = 'Result: ' + calculateResult; // alternative solution slightly more elegant
+}
+
+// Event listener for Htmlbutton to start calculation
 calculateButton.addEventListener('click', calculate);
