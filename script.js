@@ -23,15 +23,12 @@ function calculate() {
   switch (operator) {
     case '+':
       calculateResult = Number(firstNumber) + Number(secondNumber);
-      displayResult(calculateResult);
       break;
     case '-':
       calculateResult = Number(firstNumber) - Number(secondNumber);
-      displayResult(calculateResult);
       break;
     case '*':
       calculateResult = Number(firstNumber) * Number(secondNumber);
-      displayResult(calculateResult);
       break;
     case '/':
       if (secondNumber == 0) {
@@ -39,7 +36,6 @@ function calculate() {
         return;
       }
       calculateResult = Number(firstNumber) / Number(secondNumber);
-      displayResult(calculateResult);
       break;
     case '%':
       if (secondNumber == 0) {
@@ -47,16 +43,14 @@ function calculate() {
         return;
       }
       calculateResult = Number(firstNumber) % Number(secondNumber);
-      displayResult(calculateResult);
       break;
     case '**':
       calculateResult = Number(firstNumber) ** Number(secondNumber);
-      displayResult(calculateResult);
       break;
     default:
-      displayResult("Operator not found");
-      break;
+      resultText.textContent = 'Operator not found';
   }
+  displayResult(calculateResult);
 }
 
 // Display result in Htmlfield
